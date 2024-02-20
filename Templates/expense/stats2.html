@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="">Expense analysis</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+              Analysis of expense per month
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-md-2">
+      <a href="#" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h1>Analysis of expense per Month</h1>
+  </div>  
+  <div class="row">
+    <form id="yearForm" method="post" action="{% url 'stats2' %}">
+        {% csrf_token %}
+        {% include 'partials/messages.html' %}
+        <div class="form-group inapp">
+          <label for="exampleInputYear">Year</label>
+          <input type="number" class="form-control" id="exampleInputYear" aria-describedby="YearHelp" placeholder="Enter Year" min="2010" max="2024" name="select_year">
+          <input type="submit" value="Submit" class="btn btn-block btn-primary submit-btn inapp" style="margin-left:75px ;"/>
+        </div>
+    </form>
+  </div>
+  {% if expense_month_data  %}
+  <div class="row">
+      <div class="col-md-6">
+          <h2>Details</h2>
+          <div class="text-md-start center-paragraph">
+            <h3>For the year {{yr}} the break down for each month is as follows</h3>
+            <ul >
+              {% for month_num, expense in expense_month_data.items %}
+                {% if month_num == 1 %}
+                  <li class="list-group-item" >Total amount spent in {{month_num}}st month is <span class="fw-bold">{{ expense }}</span></li>
+                {% elif month_num == 2 %}
+                  <li class="list-group-item" >Total amount spent in {{month_num}}nd month is <span class="fw-bold">{{ expense }}</span></li>
+                {% elif month_num == 3 %}
+                  <li class="list-group-item" >Total amount spent in {{month_num}}rd month is <span class="fw-bold">{{ expense }}</span></li>
+                {% else %}
+                <li class="list-group-item" >Total amount spent in {{month_num}}th month is <span class="fw-bold">{{ expense }}</span></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <canvas id="myChartMonthExpense" width="200" height="200"></canvas>
+      </div>
+  </div>
+  {% endif %}
+</div>
+<script src="{% static 'js/stats.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,132 @@
+{% load static %}
+
+{% if request.user.is_authenticated %}
+<nav class="navbar">
+  <div class="logo_item">
+    <i class="bx bx-menu" id="sidebarOpen"></i>
+    <img src="{% static 'img/logo.png' %}" alt=""></i>WalletWatch
+  </div>
+
+  <div class="item">
+    <span class="navbar-text" id="username">
+      {{request.user.username}}
+    </span>
+  </div>
+
+
+  <div class="navbar_content">
+    <i class="bi bi-grid"></i>
+    <i class='bx bx-sun' id="darkLight"></i>
+    <a><i class='bx bx-bell' ></i></a>
+    <form action="{% url 'Logout' %}" method="POST">
+      {% csrf_token %}
+      <input
+          class="text text-capitalize light-mode"
+          type="submit"
+          value="Sign out"
+        />
+    </form>
+  </div>
+</nav>
+
+<!-- sidebar -->
+
+<nav class="sidebar">
+  <div class="menu_content">
+    <ul class="menu_items">
+      <div class="menu_title menu_dahsboard"></div>
+      <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+      <!-- start -->
+      <li class="item">
+        <a href="{% url "home" %}" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-home-alt"></i>
+          </span>
+          <span class="navlink">Home</span>
+          <!-- <i class="bx bx-chevron-right arrow-left"></i> -->
+        </a>
+      </li>
+      <li class="item">
+        <a href="{% url 'expenses' %}"class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-minus"></i>
+          </span>
+          <span class="navlink">Expense</span>
+          <!-- <i class="bx bx-chevron-right arrow-left"></i> -->
+        </a>
+        <a href="{% url 'income' %}" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-plus"></i>
+          </span>
+          <span class="navlink">Income</span>
+          <!-- <i class="bx bx-chevron-right arrow-left"></i> -->
+        </a>
+      </li>
+      <!-- end -->
+    </ul>
+
+    <ul class="menu_items">
+      <div class="menu_title menu_editor"></div>
+      <!-- duplicate these li tag if you want to add or remove navlink only -->
+      <!-- Start -->
+      <li class="item">
+        <div class="nav_link submenu_item">
+          <span class="navlink_icon">
+            <i class="bx bx-stats"></i>
+          </span>
+          <span class="navlink">Expense analysis</span>
+          <i class="bx bx-chevron-right arrow-left"></i>
+        </div>
+        <ul class="menu_items submenu">
+          <a href="{% url "stats1" %}" class="nav_link sublink">Expense/Category</a>
+          <a href="{% url "stats2" %}" class="nav_link sublink">Expense/Month</a>
+          <a href="{% url "stats3" %}" class="nav_link sublink">Category/Month</a>
+        </ul>
+      </li>
+      <!-- End -->
+
+      <li class="item">
+        <a href="#" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-analyse"></i>
+          </span>
+          <span class="navlink">Income analysis</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="menu_items">
+      <div class="menu_title menu_setting"></div>
+      <li class="item">
+        <a href="{% url 'preferences' %}" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-dollar-circle"></i>
+          </span>
+          <span class="navlink">Currency</span>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#" class="nav_link">
+          <span class="navlink_icon">
+            <i class="bx bx-user"></i>
+          </span>
+          <span class="navlink">Account</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Sidebar Open / Close -->
+    <div class="bottom_content">
+      <div class="bottom expand_sidebar">
+        <span> Expand</span>
+        <i class='bx bx-log-in' ></i>
+      </div>
+      <div class="bottom collapse_sidebar">
+        <span> Collapse</span>
+        <i class='bx bx-log-out'></i>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endif %}
+<script src="{% static 'js/script.js' %}"></script>
+

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="">Expense analysis</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Category wise distribution per month
+                </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-2">
+            <a href="#" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h1>Analysis of category per Month</h1>
+    </div>  
+    <div class="row">
+        <form id="yearForm" method="post" action="{% url 'stats3' %}">
+            {% csrf_token %}
+            {% include 'partials/messages.html' %}
+            <div class="form-group inapp">
+                <label for="exampleInputYear">Year</label>
+                <input type="number" class="form-control" id="exampleInputYear" aria-describedby="YearHelp" placeholder="Enter Year" min="2010" max="2024" name="select_year">
+                <input type="submit" value="Submit" class="btn btn-block btn-primary submit-btn inapp" style="margin-left:75px ;"/>
+            </div>
+        </form>
+    </div>
+    {% if category_month %}
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Details</h2>
+            <div class="text-md-start center-paragraph">
+                <h3>For the year {{yr}} the break down for each month is as follows</h3>
+                <ul>
+                    {% for month_num, data in category_month.items %}
+                        <li>In {{month_num}}st</li>
+                        <ul>
+                        {% for category, amount in data.items %}
+                            <li>Amount spent in {{category}} is <span class="fw-bold">{{ amount }}</span></li>
+                        {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <canvas id="myChartMonthCategory" width="200" height="200"></canvas>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<script src="{% static 'js/stats.js' %}"></script>
+
+{% endblock content %}

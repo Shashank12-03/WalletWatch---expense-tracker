@@ -1,0 +1,57 @@
+:root {
+	--white-color: #fff;
+	--blue-color: #4070f4;
+	--grey-color: #707070;
+	--grey-color-light: #aaa;
+  }
+  
+  body.dark {
+	--white-color: #333;
+	--blue-color: #fff;
+	--grey-color: #f2f2f2;
+	--grey-color-light: #aaa;
+  }
+  
+  @import url("https://fonts.googleapis.com/css2?family=Scope+One&display=swap");
+  
+  svg {
+	font-family: "Scope One", sans-serif;
+	width: 100%;
+	height: 100%;
+  }
+  
+  svg text {
+	animation: stroke 5s infinite alternate;
+	stroke-width: 2;
+	stroke: var(--white-color); /* Adjust stroke color according to light/dark mode */
+	font-size: 91px;
+  }
+  
+  @keyframes stroke {
+	0% {
+	  fill: rgba(0, 0, 0, 0);
+	  stroke: var(--grey-color); /* Adjust stroke color according to light/dark mode */
+	  stroke-dashoffset: 25%;
+	  stroke-dasharray: 0 50%;
+	  stroke-width: 2;
+	}
+	70% {
+	  fill: rgba(0, 0, 0, 0);
+	  stroke: var(--grey-color); /* Adjust stroke color according to light/dark mode */
+	}
+	80% {
+	  fill: rgba(0, 0, 0, 0);
+	  stroke: var(--grey-color); /* Adjust stroke color according to light/dark mode */
+	  stroke-width: 3;
+	}
+	100% {
+	  fill: var(--grey-color); /* Adjust fill color according to light/dark mode */
+	  stroke: rgba(0, 0, 0, 0);
+	  stroke-dashoffset: -25%;
+	  stroke-dasharray: 50% 0;
+	  stroke-width: 0;
+	}
+  }
+  
+/* 
+.wrapper {background-color: #FFFFFF}; */

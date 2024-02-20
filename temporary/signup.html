@@ -1,0 +1,39 @@
+
+<link rel="stylesheet" href="style.css">
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form action="{% url 'Login' %}" method="post">
+        {% csrf_token %}
+
+        {% include 'Partials/messages.html' %}
+        <input type="text" placeholder="Enter username"  name="username" id="usernameField" value="{{fieldValues.username}}">
+        <input type="password"  name="password" placeholder="Enter password" id="passwordField">
+        <a href="#">Forgot password?</a>
+        <input type="button" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="#">
+        <input type="text" placeholder="Enter your email">
+        <input type="password" placeholder="Create a password">
+        <input type="password" placeholder="Confirm your password">
+        <input type="button" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

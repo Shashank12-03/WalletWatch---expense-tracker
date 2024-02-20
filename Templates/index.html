@@ -1,0 +1,200 @@
+{% load static %}
+{% block content %}
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>WalletWatch</title>
+
+    <!-- Additional CSS Files -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-finance-business.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static "css/sidebar.css" %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}"  />
+    
+  </head>
+
+  <body>
+    {% if request.user.is_authenticated %}
+    {% include 'Partials/sidebar.html' %}
+    <div class="container home">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Today's spend</h1>
+            <h4 class="my-0 font-weight-normal">{{todays_expense}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">This month</h1>
+            <h4 class="my-0 font-weight-normal">{{this_month_expense}}</h4>
+          </div>
+        </div>
+        <hr>
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Balance</h1>
+            <h4 class="my-0 font-weight-normal">{{balance}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="{% static 'img/logo.png' %}" alt=""></i>WalletWatch
+      </div>
+      <div class="item">
+        <span class="navbar-text" id="username">
+          {{request.user.username}}
+        </span>
+      </div>
+      <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        {% if user.is_authenticated %}
+        <form action="{% url 'Logout' %}" method="POST">
+          {% csrf_token %}
+          <input
+              class="text text-capitalize light-mode"
+              type="submit"
+              value="Sign out"
+            />
+        </form>
+        {% else %}
+        <a href={% url "Login" %}><button type="button" class="btn btn-dark">Log in</button></a>
+        <a href={% url "register" %}><button type="button" class="btn btn-dark">Sign up</button></a>
+        {% endif %}
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text" id="top">
+      <div class="Modern-Slider">
+        <!-- Item -->
+        <div class="item item-1">
+          <div class="img-fill">
+            <div class="text-content">
+              <h6>Track your expense with WalletWatch</h6>
+              <h4>Expense Tracking<br>&amp; Analysis</h4>
+              <p>Start managing your finances smarter with our easy-to-use expense tracker. Stay on top of your spending effortlessly and gain control over your budget in no time</p>
+            </div>
+          </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item item-2">
+          <div class="img-fill">
+              <div class="text-content">
+                <h6>Detailed analysis</h6>
+                <h4>Analysis per month, category, expense</h4>
+                <p>Explore a smarter way to handle your money. Our platform offers insightful analysis and tracking tools, empowering you to make better financial decisions</p>
+              </div>
+          </div>
+        </div>
+        <!-- // Item -->
+        <!-- Item -->
+        <div class="item item-3">
+          <div class="img-fill">
+              <div class="text-content">
+                <h6>Income</h6>
+                <h4>Income management<br>&amp; Analysis</h4>
+                <p>Track your income effortlessly and gain insights with powerful analysis tools. Stay in control of your finances with detailed tracking and performance analysis</p>
+              </div>
+          </div>
+        </div>
+        <!-- // Item -->
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+    <div class="services">
+      <div class="container">
+        <div class="col-md-4">
+          <div class="row">
+            <div class="service-item">
+              <div class="row align-items-center">
+                  <div class="col-md-6">
+                      <img src="{% static 'img/service_01.jpeg' %}" alt="">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="content">
+                      <h4>Automatic expense adding</h4>
+                      <p>Upcoming: Seamlessly integrate online transactions for automatic expense tracking, saving you time and effort</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="service-item">
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="content">
+                    <h4>Monthly Expense Management with Income Planner</h4>
+                    <p>Upcoming: Streamline your monthly finances with our Income Planner, intelligently managing expenses for a stress-free month ahead</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <img src="{% static 'img/service_02.png' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="service-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="{% static 'img/service_03.jpg' %}" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content">
+                            <h4>You can share your budget planning with other user</h4>
+                            <p>Unlock community-driven insights and rewards with our upcoming social integration feature. Compare spending habits, earn rewards, and stay motivated on your financial journey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}  
+  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'js/custom.js'%}"></script>
+<script src="{% static 'js/owl.js'%}"></script>
+<script src="{% static 'js/slick.js'%}"></script>
+<script src="{% static 'js/accordions.js'%}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/vendor/holder.min.js'%}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script language = "text/Javascript"> 
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t){                   //declaring the array outside of the
+    if(! cleared[t.id]){                      // function makes it static and global
+        cleared[t.id] = 1;  // you could use true and false, but that's more typing
+        t.value='';         // with more chance of typos
+        t.style.color='#fff';
+        }
+    }
+</script>
+{% endblock%}
