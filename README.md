@@ -16,7 +16,7 @@ Clone the repository:
 bash
 
 Copy code
-git clone https://github.com/Shashank12-03/WalletWatch--Expense-tracker.git
+git clone https://github.com/Shashank12-03/WalletWatch---expense-tracker.git
 Navigate to the project directory:
 
 bash
