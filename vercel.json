@@ -2,7 +2,7 @@
     "builds":[{
         "src":"Expense_Tracker/wsgi.py",
         "use":"@vercel/python",
-        "config":{"maxLambdaSIze":"15mb","runtime":"python3.11"}
+        "config":{"maxLambdaSIze":"15mb","runtime":"python3.9"}
     }],
     "routes":[
         {
