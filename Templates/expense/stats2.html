@@ -43,13 +43,13 @@
             <ul >
               {% for month_num, expense in expense_month_data.items %}
                 {% if month_num == 1 %}
-                  <li class="list-group-item" >Total amount spent in {{month_num}}st month is <span class="fw-bold">{{ expense }}</span></li>
+                  <li class="" >Total amount spent in {{month_num}}st month is <span class="fw-bold">{{ expense }}</span></li>
                 {% elif month_num == 2 %}
-                  <li class="list-group-item" >Total amount spent in {{month_num}}nd month is <span class="fw-bold">{{ expense }}</span></li>
+                  <li class="" >Total amount spent in {{month_num}}nd month is <span class="fw-bold">{{ expense }}</span></li>
                 {% elif month_num == 3 %}
-                  <li class="list-group-item" >Total amount spent in {{month_num}}rd month is <span class="fw-bold">{{ expense }}</span></li>
+                  <li class="" >Total amount spent in {{month_num}}rd month is <span class="fw-bold">{{ expense }}</span></li>
                 {% else %}
-                <li class="list-group-item" >Total amount spent in {{month_num}}th month is <span class="fw-bold">{{ expense }}</span></li>
+                <li class="" >Total amount spent in {{month_num}}th month is <span class="fw-bold">{{ expense }}</span></li>
                 {% endif %}
               {% endfor %}
             </ul>
