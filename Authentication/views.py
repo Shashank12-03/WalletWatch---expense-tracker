@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from django.views import View
 import json 
-from django.contrib.auth.models import User
 from validate_email import validate_email
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -11,6 +10,7 @@ from django.utils.encoding import force_bytes,force_str, DjangoUnicodeDecodeErro
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.urls import reverse
 from .utils import account_activation_token
 # Create your views here.
@@ -24,7 +24,6 @@ class UsernameValidationView(View):
         if User.objects.filter(username=username).exists():
             return JsonResponse({'username_error':'sorry username is already taken'})
         return JsonResponse({'username_valid':True})
-    
     
 class EmailValidationView(View):
     def post(self,request):

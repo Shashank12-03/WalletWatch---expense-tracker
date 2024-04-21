@@ -83,14 +83,15 @@ WSGI_APPLICATION = 'Expense_Tracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_USER_PASSWORD'),
-        'HOST': config('DB_HOST'),
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME': 'IncomeExpensesdb',
+        'USER': 'postgres',
+        'PASSWORD':'Shashank12',
+        'HOST': 'incomeexpensesdb.cts26s8c0vvp.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -148,3 +149,14 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+AWS_ACCESS_KEY_ID = 'AKIAQONPHW3CV5ZMXE4C'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'walletwatch'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
