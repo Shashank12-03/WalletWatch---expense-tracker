@@ -13,7 +13,6 @@ import os
 import django_heroku
 from pathlib import Path
 from django.contrib import messages
-from decouple import config
 from dotenv import load_dotenv
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
