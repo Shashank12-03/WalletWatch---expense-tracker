@@ -13,8 +13,7 @@ import os
 import django_heroku
 from pathlib import Path
 from django.contrib import messages
-from dotenv import load_dotenv
-load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,10 +82,10 @@ WSGI_APPLICATION = 'Expense_Tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql',
-        'NAME': 'IncomeExpensesdb',
+        'NAME': 'walletwatch',
         'USER': 'postgres',
         'PASSWORD':'Shashank12',
-        'HOST': 'incomeexpensesdb.cts26s8c0vvp.us-east-1.rds.amazonaws.com',
+        'HOST': 'walletwatch.czickmicyd4h.ap-south-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -142,21 +141,10 @@ MESSAGE_TAGS={
 
 #Email stuff
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'joshishashank2003@gmail.com'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+DEFAULT_FROM_EMAIL = 'joshishashank2003@gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'jjssxtoztuuvlcjq'
 
-
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_SIGNATURE_NAME = os.getenv('AWS_S3_SIGNATURE_NAME')
-AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
-AWS_S3_FILE_OVERWRITE = os.getenv('AWS_S3_FILE_OVERWRITE', '').lower() == 'true'
-AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL')
-AWS_S3_VERIFY = os.getenv('AWS_S3_VERIFY', '').lower() == 'true'
-
-DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
